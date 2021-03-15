@@ -2,9 +2,13 @@ import random
 import string
 import time
 
+import urllib3
+
 from util.conf import BITBUCKET_SETTINGS
 from util.api.bitbucket_clients import BitbucketRestClient, BitbucketUserPermission
 from util.project_paths import BITBUCKET_PROJECTS, BITBUCKET_USERS, BITBUCKET_REPOS, BITBUCKET_PRS
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 DEFAULT_USER_PREFIX = 'dcapt-perf-user'
 USERS = "users"

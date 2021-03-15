@@ -3,7 +3,7 @@ settings:
   aggregator: consolidator
   verbose: false
   env:
-    application_hostname: nip-bbs-lg.instenv.internal.atlassian.com
+    application_hostname: test_bitbucket_instance.atlassian.com
     application_protocol: https
     application_port: 443
     secure: true
