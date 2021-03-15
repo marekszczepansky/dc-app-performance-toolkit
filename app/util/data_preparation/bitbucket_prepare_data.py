@@ -1,7 +1,6 @@
 import random
 import string
 import time
-
 import urllib3
 
 from util.conf import BITBUCKET_SETTINGS
