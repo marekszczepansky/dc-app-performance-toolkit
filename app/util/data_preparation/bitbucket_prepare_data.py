@@ -97,7 +97,7 @@ def __get_prs(bitbucket_api):
                                           pr['fromRef']['displayId'], pr['toRef']['displayId']])
     if len(repos_prs) < concurrency:
         repos_without_prs = [f'{repo["project"]["key"]}/{repo["slug"]}' for repo in repos]
-        raise SystemExit(f'Repositories {repos_without_prs} do not contain at least {concurrency} pull requests')
+        raise SystemExit(f'Repositories {repos_without_prs} do not contain at least {concurrency} pull requests. Only contains {len(repos_prs)} PRs')
     print(f"Successfully fetched pull requests in  [{(time.time() - start_time)}]")
     return repos_prs
 
