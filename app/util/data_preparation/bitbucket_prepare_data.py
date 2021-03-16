@@ -73,7 +73,7 @@ def __get_projects(bitbucket_api):
 def __get_prs(bitbucket_api):
     concurrency = BITBUCKET_SETTINGS.concurrency
     repos_prs = []
-    REPOS_TO_FETCH = 10000
+    REPOS_TO_FETCH = 1000
     start_time = time.time()
     repos = bitbucket_api.get_non_fork_repos(REPOS_TO_FETCH)
     for repo in repos:
