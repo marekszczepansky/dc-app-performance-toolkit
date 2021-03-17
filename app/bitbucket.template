@@ -62,7 +62,7 @@ scenarios:
       tmp_dir: /tmp
       ssh_key_url: https://centaurus-datasets.s3.us-east-2.amazonaws.com/bitbucket/ssh/id_rsa
   datapipeline:
-    script: jmeter/datapipeline.jmx
+    script: jmeter/datapipeline-bitbucket.jmx
     properties:
       application_hostname: ${application_hostname}
       application_protocol: ${application_protocol}
