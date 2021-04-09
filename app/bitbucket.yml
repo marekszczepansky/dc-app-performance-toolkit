@@ -3,16 +3,17 @@ settings:
   aggregator: consolidator
   verbose: false
   env:
-    application_hostname: test_bitbucket_instance.atlassian.com
+    application_hostname: nip-bbs-ent.instenv.internal.atlassian.com
+    ssh_hostname: nip-bbs-ent-alt-df98a227cf36fce8.elb.ap-southeast-2.amazonaws.com
     application_protocol: https
     application_port: 443
     secure: true
     application_postfix: null
     admin_login: admin
-    admin_password: MasterPassword18
+    admin_password: admin
     load_executor: jmeter
-    concurrency: 10
-    test_duration: 1m
+    concurrency: 2
+    test_duration: 5m
     ramp-up: 10m
     total_actions_per_hour: 32700
     WEBDRIVER_VISIBLE: false
@@ -52,11 +53,12 @@ scenarios:
       application_protocol: ${application_protocol}
       application_port: ${application_port}
       application_postfix: ${application_postfix}
+      ssh_hostname: ${ssh_hostname}
       total_actions_per_hr: ${total_actions_per_hour}
       tmp_dir: /tmp
       ssh_key_url: https://centaurus-datasets.s3.us-east-2.amazonaws.com/bitbucket/ssh/id_rsa
   datapipeline:
-    script: jmeter/datapipeline.jmx
+    script: jmeter/datapipeline-bitbucket.jmx
     properties:
       application_hostname: ${application_hostname}
       application_protocol: ${application_protocol}
@@ -94,7 +96,7 @@ modules:
     download-link: https://dcapt-downloads.s3.us-east-2.amazonaws.com/apache-jmeter-5.2.1.zip
   selenium:
     chromedriver:
-      version: 86.0.4240.22
+      version: 88.0.4324.96
 reporting:
   - data-source: sample-labels
     module: junit-xml
