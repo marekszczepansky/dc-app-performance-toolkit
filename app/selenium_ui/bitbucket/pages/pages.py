@@ -27,6 +27,9 @@ class LoginPage(BasePage):
         el = self.get_element(LoginPageLocators.application_version)
         return ''.join([i for i in el.text.split('.')[0] if i.isdigit()])
 
+    def get_app_minor_version(self):
+       el = self.get_element(LoginPageLocators.application_version)
+       return ''.join([i for i in el.text.split('.')[1] if i.isdigit()]) 
 
 class LogoutPage(BasePage):
 
@@ -40,7 +43,14 @@ class GetStarted(BasePage):
 
 class Dashboard(BasePage):
     page_url = DashboardLocators.dashboard_url
-    page_loaded_selector = DashboardLocators.dashboard_presence
+
+    def wait_for_page_loaded(self):
+        dashboard_page = DashboardLocators.dashboard_presence['6']
+        # For versions greater than 7.12
+        if self.app_version == '7' and int(self.app_minor_version) >= 12:
+            dashboard_page = DashboardLocators.dashboard_presence['7.12']
+        print("dashboard page", dashboard_page)
+        self.wait_until_visible(dashboard_page)
 
 
 class Projects(BasePage):

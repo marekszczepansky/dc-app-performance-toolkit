@@ -129,6 +129,10 @@ class BasePage:
     def app_version(self):
         return self.driver.app_version if 'app_version' in dir(self.driver) else None
 
+    @property
+    def app_minor_version(self):
+        return self.driver.app_minor_version if 'app_minor_version' in dir(self.driver) else None
+
     @staticmethod
     def generate_random_string(length):
         return "".join([random.choice(string.digits + string.ascii_letters + ' ') for _ in range(length)])

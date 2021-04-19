@@ -28,6 +28,7 @@ def login(webdriver, datasets):
         def sub_measure():
             login_page.go_to()
             webdriver.app_version = login_page.get_app_version()
+            webdriver.app_minor_version = login_page.get_app_minor_version()
         sub_measure()
 
         login_page.set_credentials(datasets['username'], datasets['password'])
