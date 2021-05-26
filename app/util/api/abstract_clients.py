@@ -39,7 +39,7 @@ class RestClient(Client):
     def to_json(obj: dict) -> str:
         return json.dumps(obj)
 
-    def __init__(self, host, user, password, session=None, timeout=30):
+    def __init__(self, host, user, password, session=None, timeout=120):
         super().__init__(host, user, password)
 
         self._requests_timeout = timeout
